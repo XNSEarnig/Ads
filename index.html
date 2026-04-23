@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="//libtl.com/sdk.js" data-zone="9804827" data-sdk="show_9804827"></script>
-    <title>Telegram Bot UI</title>
+    <title>Watching Ads</title>
     <style>
         * {
             margin: 0;
@@ -538,7 +538,7 @@
                     </div>
                 </div>
                 <div class="round-system">
-                    Lv. 5
+                    XNS.5
                 </div>
             </div>
         </div>
@@ -577,7 +577,7 @@
                         <div class="task-icon">📺</div>
                         <div class="task-details">
                             <div class="task-title">Watch a video ad</div>
-                            <div class="task-reward">Reward: $0.50</div>
+                            <div class="task-reward">Reward: $0.05</div>
                         </div>
                         <button class="task-action" id="watchAdBtn">Start</button>
                     </div>
@@ -585,7 +585,7 @@
                         <div class="task-icon">🛒</div>
                         <div class="task-details">
                             <div class="task-title">Complete a survey</div>
-                            <div class="task-reward">Reward: $1.50</div>
+                            <div class="task-reward">Reward: $0.20</div>
                         </div>
                         <button class="task-action">Start</button>
                     </div>
@@ -593,7 +593,7 @@
                         <div class="task-icon">🎮</div>
                         <div class="task-details">
                             <div class="task-title">Play a mini-game</div>
-                            <div class="task-reward">Reward: $0.75</div>
+                            <div class="task-reward">Reward: $0.10</div>
                         </div>
                         <button class="task-action">Start</button>
                     </div>
@@ -601,7 +601,7 @@
                         <div class="task-icon">👥</div>
                         <div class="task-details">
                             <div class="task-title">Refer a friend</div>
-                            <div class="task-reward">Reward: $5.00</div>
+                            <div class="task-reward">Reward: $0.10</div>
                         </div>
                         <button class="task-action">Invite</button>
                     </div>
@@ -626,9 +626,9 @@
                 <div class="withdraw-card">
                     <h3>Withdrawal Method</h3>
                     <div class="withdraw-options">
-                        <div class="withdraw-option active" data-method="paypal">
+                        <div class="withdraw-option active" data-method="Bkash">
                             <div class="withdraw-option-icon">💳</div>
-                            <div class="withdraw-option-name">PayPal</div>
+                            <div class="withdraw-option-name">Bkash</div>
                             <div class="withdraw-option-fee">Fee: 2%</div>
                         </div>
                         <div class="withdraw-option" data-method="crypto">
@@ -653,11 +653,11 @@
                     <h3>Withdrawal Details</h3>
                     <div class="form-group">
                         <label for="withdrawAmount">Amount to Withdraw ($)</label>
-                        <input type="number" class="form-control" id="withdrawAmount" placeholder="Enter amount" min="1" step="0.01">
+                        <input type="number" class="form-control" id="withdrawAmount" placeholder="Enter amount" min="5" step="0.01">
                     </div>
                     <div class="form-group" id="paypalDetails">
-                        <label for="paypalEmail">PayPal Email</label>
-                        <input type="email" class="form-control" id="paypalEmail" placeholder="Enter your PayPal email">
+                        <label for="Bkash Number">Bkash Number</label>
+                        <input type="Number" class="form-control" id="Bkash Number" placeholder="Enter your Bkash Number">
                     </div>
                     <div class="form-group" id="cryptoDetails" style="display: none;">
                         <label for="cryptoWallet">Crypto Wallet Address</label>
@@ -710,7 +710,7 @@
 
                 <div class="referral-card">
                     <h3>Invite Friends</h3>
-                    <p>Share your referral link with friends to earn $5.00 for each friend who signs up and completes their first task.</p>
+                    <p>Share your referral link with friends to earn $0.10 for each friend who signs up and completes their first task.</p>
                     
                     <div class="referral-link-container">
                         <input type="text" class="referral-link" id="referralLink" value="https://t.me/YourBot?start=ref12345" readonly>
@@ -791,9 +791,9 @@
     <div class="modal" id="adModal">
         <div class="modal-content">
             <h3>Watch Ad to Earn</h3>
-            <p>Please watch the full ad to receive your reward of $0.50.</p>
+            <p>Please watch the full ad to receive your reward of $0.05.</p>
             <div style="height: 200px; background: #2c3e50; display: flex; align-items: center; justify-content: center; margin: 15px 0; border-radius: 8px;">
-                <p>Ad Content Would Appear Here</p>
+                <p>এইখানে Ads আসবে দেখা শেষ হলো Close বাটনে ক্লিক করুন</p>
             </div>
             <button class="modal-close" id="adCloseBtn">Close</button>
         </div>
@@ -1003,7 +1003,7 @@
 
         // Reward user for watching ad
         function rewardUser() {
-            const rewardAmount = 0.50;
+            const rewardAmount = 0.05;
             userData.balance += rewardAmount;
             userData.totalEarned += rewardAmount;
             userData.tasksCompleted += 1;
@@ -1047,7 +1047,7 @@
             document.querySelector(`.withdraw-option[data-method="${method}"]`).classList.add('active');
             
             // Show/hide method-specific fields
-            document.getElementById('paypalDetails').style.display = method === 'paypal' ? 'block' : 'none';
+            document.getElementById('paypalDetails').style.display = method === 'Bkash' ? 'block' : 'none';
             document.getElementById('cryptoDetails').style.display = method === 'crypto' ? 'block' : 'none';
             document.getElementById('bankDetails').style.display = method === 'bank' ? 'block' : 'none';
             document.getElementById('giftcardDetails').style.display = method === 'giftcard' ? 'block' : 'none';
@@ -1059,7 +1059,7 @@
         // Validate withdrawal amount
         function validateWithdrawalAmount() {
             const amount = parseFloat(withdrawAmount.value) || 0;
-            const minWithdrawal = 1.00;
+            const minWithdrawal = 5.00;
             const maxWithdrawal = userData.balance;
             
             if (amount < minWithdrawal) {
@@ -1087,7 +1087,7 @@
             // Calculate fee based on method
             let feePercentage = 0;
             switch(method) {
-                case 'paypal': feePercentage = 0.02; break;
+                case 'Bkash': feePercentage = 0.02; break;
                 case 'crypto': feePercentage = 0.01; break;
                 case 'bank': feePercentage = 0.03; break;
                 case 'giftcard': feePercentage = 0; break;
@@ -1138,7 +1138,7 @@
             let historyHTML = '';
             userData.withdrawalHistory.forEach(withdrawal => {
                 const methodIcons = {
-                    'paypal': '💳',
+                    'Bkash': '💳',
                     'crypto': '₿',
                     'bank': '🏦',
                     'giftcard': '🎁'
